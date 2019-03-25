@@ -31,7 +31,9 @@ struct mario_kart
     uint8_t c;  // character of the car itself
     uint16_t s;  // speed of car
     uint32_t ts;   // time without a collision to determine speed
-    uint32_t t;   // time of the race
+    uint32_t st;   // start time of the race
+    uint32_t ft;   // finishing time of the race
+    uint32_t t; // time of race
     uint16_t i; //
     uint8_t id; ///< ID of game
 };
@@ -80,6 +82,7 @@ void Play(void)
     game.c = '^';
     game.s = 175;
     game.i = 0;
+    game.ts = TimeNow();
     Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
     Game_RegisterPlayer1Receiver(Receiver);
 
@@ -125,8 +128,13 @@ void drawTrack() {
 
     if (game.i == MAXCYCLES) {
         Task_Remove(drawTrack, 0);
+        game.ft = TimeNow();
+        game.t = (game.ft - game.st) / 1000;
         Game_ClearScreen();
-        Game_Printf("YOU WIN!");
+        Game_Printf("YOU WIN!\n");
+        Game_Printf("Your time was ");
+        Game_Printf(game.t);
+        Game_Printf(" seconds!");
     }
     else {
         Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
@@ -182,8 +190,10 @@ void MoveLeft() {
 void DetectCollision() {
     if ((game.x <= leftLimits[WINDOW_HEIGHT - 2]) || (game.x >= (leftLimits[WINDOW_HEIGHT - 2] + TRACK_WIDTH))) {
         game.ts = 0;
+        //Game_SetColor();
     } else {
         game.ts ++;
+        //Game_SetColor();
     }
 }
 
