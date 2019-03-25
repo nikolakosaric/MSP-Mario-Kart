@@ -20,20 +20,22 @@
 #define WINDOW_WIDTH 25
 #define WINDOW_HEIGHT 10
 #define TRACK_WIDTH 10
+#define MAXSPEED 5
+#define MINSPACE 1
+#define MAXSPACE 7
+#define MAXCYCLES 350
 
 struct mario_kart
 {
     uint8_t x;  // coordinate of the car
     uint8_t c;  // character of the car itself
-    uint8_t speed;  // speed of car
-    uint8_t timeWithoutCollision;   // time to determine speed
-    uint8_t time;   // time of the race
+    uint16_t s;  // speed of car
+    uint32_t ts;   // time without a collision to determine speed
+    uint32_t t;   // time of the race
+    uint16_t i; //
     uint8_t id; ///< ID of game
 };
 
-#define MAXSPEED 5
-#define MINSPACE 1
-#define MAXSPACE 7
 
 static struct mario_kart game;
 
@@ -43,13 +45,14 @@ static void Help(void);
 static void newTrackWidth(void);
 static void drawTrack(void);
 
-
 static void Receiver(uint8_t c);
 static void MoveLeft(void);
 static void MoveRight(void);
 
-uint8_t leftLimits[WINDOW_HEIGHT-1] = {7, 0, 0, 0, 0, 0, 0, 0, 0};
+static void DetectCollision(void);
+static void SetSpeed(void);
 
+uint8_t leftLimits[WINDOW_HEIGHT-1] = {7, 0, 0, 0, 0, 0, 0, 0, 0};
 
 
 void Mario_Kart_Init()
@@ -75,11 +78,12 @@ void Play(void)
 
     game.x = 12;
     game.c = '^';
+    game.s = 175;
+    game.i = 0;
     Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
     Game_RegisterPlayer1Receiver(Receiver);
 
-    //drawTrack();
-    Task_Schedule(drawTrack, 0, 1000, 175);
+    Task_Schedule(drawTrack, 0, 1000, game.s);
 }
 
 void newTrackWidth() {
@@ -116,30 +120,44 @@ void drawTrack() {
         }
 
     }
-    Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
-    newTrackWidth();
-}
 
-void Receiver(uint8_t c) {
-    switch (c) {
-        case 'a':
-        case ',':
-        case 'A':
-        case '<':
-            MoveLeft();
-            break;
-        case 'd':
-        case 'D':
-        case '.':
-        case '>':
-            MoveRight();
-            break;
-        default:
-            break;
+    game.i ++;
+
+    if (game.i == MAXCYCLES) {
+        Task_Remove(drawTrack, 0);
+        Game_ClearScreen();
+        Game_Printf("YOU WIN!");
+    }
+    else {
+        Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
+        DetectCollision();
+        newTrackWidth();
+        SetSpeed();
     }
 }
 
-void MoveRight(void) {
+void Receiver(uint8_t c) {
+    if (game.i != MAXCYCLES) {
+        switch (c) {
+            case 'a':
+            case ',':
+            case 'A':
+            case '<':
+                MoveLeft();
+                break;
+            case 'd':
+            case 'D':
+            case '.':
+            case '>':
+                MoveRight();
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void MoveRight() {
     // make sure we can move right
     if (game.x < WINDOW_WIDTH - 1) {
         // clear location
@@ -150,7 +168,7 @@ void MoveRight(void) {
     }
 }
 
-void MoveLeft(void) {
+void MoveLeft() {
     // make sure we can move right
     if (game.x > 1) {
         // clear location
@@ -159,4 +177,33 @@ void MoveLeft(void) {
         // update
         Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
     }
+}
+
+void DetectCollision() {
+    if ((game.x <= leftLimits[WINDOW_HEIGHT - 2]) || (game.x >= (leftLimits[WINDOW_HEIGHT - 2] + TRACK_WIDTH))) {
+        game.ts = 0;
+    } else {
+        game.ts ++;
+    }
+}
+
+void SetSpeed () {
+    switch(game.ts) {
+        case 0:
+            game.s = 1000;
+            break;
+        case 10:
+            game.s = 750;
+            break;
+        case 30:
+            game.s = 500;
+            break;
+        case 50:
+            game.s = 250;
+            break;
+        case 75:
+            game.s = 175;
+            break;
+    }
+    Task_ChangePeriod(drawTrack, game.s, 1);
 }
