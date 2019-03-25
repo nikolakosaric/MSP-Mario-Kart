@@ -40,12 +40,16 @@ static struct mario_kart game;
 static void Play(void);
 static void Help(void);
 
-static void initialTrackWidth(void);
 static void newTrackWidth(void);
 static void drawTrack(void);
 
-uint8_t leftLimits[WINDOW_HEIGHT-1] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-uint8_t rightLimits[WINDOW_HEIGHT -1] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+static void Receiver(uint8_t c);
+static void MoveLeft(void);
+static void MoveRight(void);
+
+uint8_t leftLimits[WINDOW_HEIGHT-1] = {7, 0, 0, 0, 0, 0, 0, 0, 0};
+
 
 
 void Mario_Kart_Init()
@@ -69,14 +73,13 @@ void Play(void)
     // draw a box around our map
     Game_DrawRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-    initialTrackWidth();
+    game.x = 12;
+    game.c = '^';
+    Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
+    Game_RegisterPlayer1Receiver(Receiver);
 
     //drawTrack();
-    Task_Schedule(drawTrack, 0, 1000, 750);
-}
-
-void initialTrackWidth() {
-    leftLimits[0] = random_int(MINSPACE, MAXSPACE);
+    Task_Schedule(drawTrack, 0, 1000, 175);
 }
 
 void newTrackWidth() {
@@ -113,5 +116,47 @@ void drawTrack() {
         }
 
     }
+    Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
     newTrackWidth();
+}
+
+void Receiver(uint8_t c) {
+    switch (c) {
+        case 'a':
+        case ',':
+        case 'A':
+        case '<':
+            MoveLeft();
+            break;
+        case 'd':
+        case 'D':
+        case '.':
+        case '>':
+            MoveRight();
+            break;
+        default:
+            break;
+    }
+}
+
+void MoveRight(void) {
+    // make sure we can move right
+    if (game.x < WINDOW_WIDTH - 1) {
+        // clear location
+        Game_CharXY(' ', game.x, WINDOW_HEIGHT - 1);
+        game.x++;
+        // update
+        Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
+    }
+}
+
+void MoveLeft(void) {
+    // make sure we can move right
+    if (game.x > 1) {
+        // clear location
+        Game_CharXY(' ', game.x, WINDOW_HEIGHT - 1);
+        game.x--;
+        // update
+        Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
+    }
 }
