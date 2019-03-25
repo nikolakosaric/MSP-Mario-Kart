@@ -81,19 +81,9 @@ void initialTrackWidth() {
 
 void newTrackWidth() {
     uint8_t y = 8;
-    /*for (y = 8; y > 1; y --) {
+    for (y = WINDOW_HEIGHT - 2; y > 0; y--) {
         leftLimits[y] = leftLimits[y-1];
     }
-*/
-
-    leftLimits[8] = leftLimits[7];
-    leftLimits[7] = leftLimits[6];
-    leftLimits[6] = leftLimits[5];
-    leftLimits[5] = leftLimits[4];
-    leftLimits[4] = leftLimits[3];
-    leftLimits[3] = leftLimits[2];
-    leftLimits[2] = leftLimits[1];
-    leftLimits[1] = leftLimits[0];
     uint8_t min = leftLimits[1] - 2;
     uint8_t max = leftLimits[1] + 2;
     if (min <= 2) {min = 2;}
