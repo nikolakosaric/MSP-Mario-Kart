@@ -127,14 +127,13 @@ void drawTrack() {
     game.i ++;
 
     if (game.i == MAXCYCLES) {
+        Game_SetColor(BackgroundBlack);
         Task_Remove(drawTrack, 0);
         game.ft = TimeNow();
         game.t = (game.ft - game.st) / 1000;
         Game_ClearScreen();
-        Game_Printf("YOU WIN!\n");
-        Game_Printf("Your time was ");
-        Game_Printf(game.t);
-        Game_Printf(" seconds!");
+        Game_Printf("YOU WIN!\r\n");
+        Game_Printf("Your time was %d seconds!", game.t);
     }
     else {
         Game_CharXY(game.c, game.x, WINDOW_HEIGHT - 1);
@@ -190,10 +189,10 @@ void MoveLeft() {
 void DetectCollision() {
     if ((game.x <= leftLimits[WINDOW_HEIGHT - 2]) || (game.x >= (leftLimits[WINDOW_HEIGHT - 2] + TRACK_WIDTH))) {
         game.ts = 0;
-        //Game_SetColor();
+        Game_SetColor(BackgroundRed);
     } else {
         game.ts ++;
-        //Game_SetColor();
+        Game_SetColor(BackgroundGreen);
     }
 }
 
