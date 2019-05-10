@@ -198,4 +198,5 @@
 		<project id="MSP Mario Kart.com.ti.ccstudio.buildDefinitions.MSP430.ProjectType.846544258" name="MSP430" projectType="com.ti.ccstudio.buildDefinitions.MSP430.ProjectType"/>
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

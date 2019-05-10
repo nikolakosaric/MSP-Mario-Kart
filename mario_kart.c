@@ -6,55 +6,10 @@
  */
 
 //
-#include <stdint.h>
-#include "project_settings.h"
-#include "random_int.h"
-#include "stddef.h"
-#include "strings.h"
-#include "game.h"
-#include "timing.h"
-#include "task.h"
-#include "terminal.h"
-#include "random_int.h"
 
-#define WINDOW_WIDTH 25
-#define WINDOW_HEIGHT 10
-#define TRACK_WIDTH 10
-#define MAXSPEED 5
-#define MINSPACE 1
-#define MAXSPACE 7
-#define MAXCYCLES 350
-
-struct mario_kart
-{
-    uint8_t x;  // coordinate of the car
-    uint8_t c;  // character of the car itself
-    uint16_t s;  // speed of car
-    uint32_t ts;   // time without a collision to determine speed
-    uint32_t st;   // start time of the race
-    uint32_t ft;   // finishing time of the race
-    uint8_t ss;
-    uint32_t t; // time of race
-    uint16_t i; //
-    uint8_t id; ///< ID of game
-};
+#include "mario_kart.h"
 
 static struct mario_kart game;
-
-static void Play(void);
-static void Help(void);
-
-static void newTrackWidth(void);
-static void drawTrack(void);
-
-static void Receiver(uint8_t c);
-static void MoveLeft(void);
-static void MoveRight(void);
-
-static void DetectCollision(void);
-static void SetSpeed(void);
-
-static void FinishRace(void);
 
 uint8_t leftLimits[WINDOW_HEIGHT - 1] = { 7, 0, 0, 0, 0, 0, 0, 0, 0 };
 
@@ -74,7 +29,7 @@ void Help(void)
 
 void Play(void)
 {
-    // clear the screenca
+    // clear the screen
     Game_ClearScreen();
     Game_HideCursor();
 

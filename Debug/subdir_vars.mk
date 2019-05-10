@@ -9,19 +9,19 @@ CMD_SRCS += \
 ../lnk_msp430f5529.cmd 
 
 C_SRCS += \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/buffer.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/buffer_printf.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/games/game.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/hal/MSP430/MSP430F5529/hal_uart.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/list.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/buffer.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/buffer_printf.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/games/game.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/hal/MSP430/MSP430F5529/hal_uart.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/list.c \
 ../main.c \
 ../mario_kart.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/random_int.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/subsystem.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/task.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/terminal.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/timing.c \
-C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded_Software_Fork/src/uart.c 
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/random_int.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/subsystem.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/task.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/terminal.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/timing.c \
+C:/Users/nikol/Documents/Spring\ 2018/Embedded\ Softwares/Embedded\ Softwares\ Fork/src/uart.c 
 
 C_DEPS += \
 ./buffer.d \
@@ -84,18 +84,18 @@ C_DEPS__QUOTED += \
 "uart.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/buffer.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/buffer_printf.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/games/game.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/hal/MSP430/MSP430F5529/hal_uart.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/list.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/buffer.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/buffer_printf.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/games/game.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/hal/MSP430/MSP430F5529/hal_uart.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/list.c" \
 "../main.c" \
 "../mario_kart.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/random_int.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/subsystem.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/task.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/terminal.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/timing.c" \
-"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded_Software_Fork/src/uart.c" 
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/random_int.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/subsystem.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/task.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/terminal.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/timing.c" \
+"C:/Users/nikol/Documents/Spring 2018/Embedded Softwares/Embedded Softwares Fork/src/uart.c" 
 
 

@@ -2,9 +2,6 @@
 #include <stdint.h>
 
 #include "project_settings.h"
-#include "subsystem.h"
-#include "task.h"
-#include "uart.h"
 #include "hal_general.h"
 #include "mario_kart.h"
 

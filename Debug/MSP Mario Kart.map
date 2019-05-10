@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker PC v18.1.2                     
 ******************************************************************************
->> Linked Tue Mar 26 19:26:36 2019
+>> Linked Fri May 10 08:20:45 2019
 
 OUTPUT FILE NAME:   <MSP Mario Kart.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00004400
@@ -643,6 +643,7 @@ address   name
 0000050f  DMAIV_H                                
 0000050e  DMAIV_L                                
 000127ec  DelayMs                                
+00012296  DetectCollision                        
 00000140  FCTL1                                  
 00000141  FCTL1_H                                
 00000140  FCTL1_L                                
@@ -652,6 +653,7 @@ address   name
 00000146  FCTL4                                  
 00000147  FCTL4_H                                
 00000146  FCTL4_L                                
+00011b5e  FinishRace                             
 00012502  Game_CharXY                            
 00012a9c  Game_ClearScreen                       
 00011210  Game_DrawRect                          
@@ -662,6 +664,7 @@ address   name
 00011db8  Game_Register                          
 00012bf4  Game_RegisterPlayer1Receiver           
 00012798  Game_SetColor                          
+00012a08  Help                                   
 00011f1a  List_AddIndirect                       
 000128a2  List_GetFirst                          
 000109ae  List_GetItem                           
@@ -719,6 +722,8 @@ address   name
 000004c1  MPY_H                                  
 000004c0  MPY_L                                  
 00012940  Mario_Kart_Init                        
+00012696  MoveLeft                               
+0001263a  MoveRight                              
 000004c8  OP2                                    
 000004e2  OP2H                                   
 000004e3  OP2H_H                                 
@@ -859,6 +864,7 @@ address   name
 0000012e  PMMRIE                                 
 0000012f  PMMRIE_H                               
 0000012e  PMMRIE_L                               
+00011804  Play                                   
 00000158  RCCTL0                                 
 00000159  RCCTL0_H                               
 00000158  RCCTL0_L                               
@@ -917,6 +923,7 @@ address   name
 000004b6  RTCYEAR                                
 000004b7  RTCYEAR_H                              
 000004b6  RTCYEAR_L                              
+00012212  Receiver                               
 00000100  SFRIE1                                 
 00000101  SFRIE1_H                               
 00000100  SFRIE1_L                               
@@ -972,6 +979,7 @@ address   name
 0000019b  SYSUNIV_H                              
 0000019a  SYSUNIV_L                              
 00011a00  SetClk24MHz                            
+000115d0  SetSpeed                               
 00012014  SetVcoreUp                             
 000126c2  Subsystem_GetName                      
 00011984  Subsystem_Init                         
@@ -1381,6 +1389,7 @@ ffffffff  __c_args__
 00012c48  _system_pre_init                       
 00003e4e  _unlock                                
 00012c3a  abort                                  
+00010e6c  drawTrack                              
 00003e28  error_flags                            
 00003e29  game_id                                
 00003e52  game_last_index                        
@@ -1402,6 +1411,7 @@ ffffffff  __c_args__
 00003e40  leftLimits                             
 000122d6  main                                   
 00012ba2  memcpy                                 
+00012254  newTrackWidth                          
 00003e53  playing_id                             
 00012316  rand                                   
 000124c8  random_int                             
@@ -2239,6 +2249,7 @@ address   name
 0001063a  Buffer_vprintf                         
 0001080e  UART_Tick                              
 000109ae  List_GetItem                           
+00010e6c  drawTrack                              
 00010f2e  List_LinkItem                          
 00010fec  SystemTick                             
 000110a4  __mspabi_mpyf                          
@@ -2248,14 +2259,17 @@ address   name
 00011406  UART_Init                              
 000114a4  Buffer_Float                           
 00011540  Buffer_Enqueue                         
+000115d0  SetSpeed                               
 00011660  List_Init                              
 000116ec  Task_Remove                            
 00011778  __mspabi_cvtdf                         
+00011804  Play                                   
 00011906  __mspabi_fixfli                        
 00011984  Subsystem_Init                         
 00011a00  SetClk24MHz                            
 00011a78  __TI_decompress_lzss                   
 00011aee  Task_Init                              
+00011b5e  FinishRace                             
 00011bcc  __mspabi_fixfi                         
 00011c98  Task_ChangePeriod                      
 00011cfc  Buffer_uint32                          
@@ -2271,6 +2285,9 @@ address   name
 000120fc  Task_Schedule                          
 00012146  Log_Header                             
 000121ce  UART_RegisterReceiver                  
+00012212  Receiver                               
+00012254  newTrackWidth                          
+00012296  DetectCollision                        
 000122d6  main                                   
 00012316  rand                                   
 00012356  Buffer_Dequeue                         
@@ -2313,7 +2330,9 @@ address   name
 0001256e  Game_Init                              
 000125d6  Terminal_CharXY                        
 00012608  UART_printf                            
+0001263a  MoveRight                              
 00012668  UART_vprintf                           
+00012696  MoveLeft                               
 000126c2  Subsystem_GetName                      
 000126ee  __mspabi_divi                          
 000126ee  __mspabi_remi                          
@@ -2339,6 +2358,7 @@ address   name
 000129b6  Terminal_ShowCursor                    
 000129d2  hal_UART_RxByte                        
 000129ee  Buffer_Str                             
+00012a08  Help                                   
 00012a3c  List_GetNext                           
 00012a54  List_UnlinkItem                        
 00012a6c  hal_Timing_Init                        
@@ -2380,4 +2400,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[951 symbols]
+[961 symbols]
